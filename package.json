@@ -1,0 +1,22 @@
+{
+  "name": "powerbulletin-client",
+  "version": "0.0.1",
+  "description": "client library for powerbulletin forums",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "forum",
+    "http",
+    "client",
+    "powerbulletin",
+    "realtime",
+    "socket.io"
+  ],
+  "author": "John BEPPU",
+  "license": "MIT",
+  "dependencies": {
+    "request": "~2.34.0"
+  }
+}
