@@ -1,5 +1,5 @@
 {
-  "name": "powerbulletin-client",
+  "name": "pb-client",
   "version": "0.0.1",
   "description": "client library for powerbulletin forums",
   "main": "index.js",
