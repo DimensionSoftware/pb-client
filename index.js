@@ -87,7 +87,28 @@
         }
       });
     };
-    prototype.post = function(forum_id, parent_id, body, cb){};
+    prototype.post = function(forum_id, parent_id, body, cb){
+      var this$ = this;
+      return this.request.post(this.R('/resources/posts'), {
+        form: {
+          forum_id: forum_id,
+          parent_id: parent_id,
+          body: body
+        }
+      }, function(err, res, body){
+        var r, e;
+        if (err) {
+          return cb(err);
+        }
+        try {
+          r = JSON.parse(body);
+          return cb(null, r);
+        } catch (e$) {
+          e = e$;
+          return cb(e);
+        }
+      });
+    };
     return PBClient;
   }());
 }).call(this);

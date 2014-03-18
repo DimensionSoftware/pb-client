@@ -45,3 +45,10 @@ module.exports = class PBClient
       cb e
 
   post: (forum_id, parent_id, body, cb) ->
+    err, res, body <~ @request.post @R('/resources/posts'), form: { forum_id, parent_id, body }
+    if err then return cb err
+    try
+      r = JSON.parse body
+      cb null, r
+    catch
+      cb e
