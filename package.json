@@ -22,6 +22,8 @@
   "author": "John BEPPU",
   "license": "MIT",
   "dependencies": {
-    "request": "~2.34.0"
+    "request": "~2.34.0",
+    "commander": "~2.1.0",
+    "rss-emitter": "0.0.1"
   }
 }
