@@ -109,6 +109,24 @@
         }
       });
     };
+    prototype.createPost = function(path, title, body, cb){
+      var this$ = this;
+      return this.request.get(this.R(path) + "?_surf=1", function(err, res, body){
+        var r, locals, e;
+        try {
+          r = JSON.parse(body);
+          locals = r.locals;
+          if (locals.type === 'forum') {
+            this$.createThread(locals.forum.id, title, body, cb);
+          } else {
+            this$.post(locals.forum.id, locals.thread.id, body, cb);
+          }
+        } catch (e$) {
+          e = e$;
+          return cb(e);
+        }
+      });
+    };
     return PBClient;
   }());
 }).call(this);

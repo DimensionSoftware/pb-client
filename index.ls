@@ -52,3 +52,18 @@ module.exports = class PBClient
       cb null, r
     catch
       cb e
+
+  create-post: (path, title, body, cb) ->
+    # If path points to a forum page, create a thread.
+    # If path poitns to a thread page, add a post to the thread.
+    err, res, body <~ @request.get "#{@R(path)}?_surf=1"
+    try
+      r = JSON.parse body
+      locals = r.locals
+      if locals.type is \forum
+        @create-thread locals.forum.id, title, body, cb
+      else
+        @post locals.forum.id, locals.thread.id, body, cb
+      return
+    catch
+      cb e
