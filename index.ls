@@ -57,6 +57,7 @@ module.exports = class PBClient
     # If path points to a forum page, create a thread.
     # If path poitns to a thread page, add a post to the thread.
     err, res, body <~ @request.get "#{@R(path)}?_surf=1"
+    if err then return cb err
     try
       r = JSON.parse body
       locals = r.locals
