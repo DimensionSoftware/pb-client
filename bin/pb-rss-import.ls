@@ -24,16 +24,20 @@ program
 program.parse process.argv
 
 purl = url.parse program.dst
-dst = new PBClient purl.href, program.email, program.password
+site = "#{purl.protocol}//#{purl.hostname}"
+dst = new PBClient site, program.email, program.password
 err <- dst.login
-if err then console.error err
+if err
+  console.error "login failed"
+  console.error err
+  process.exit 1
 
 src = new RSSEmitter program.feed-db
 
 src.on \item:new, (guid, item) ->
   # if dst is a thread url, add item to thread
   # if dst is a forum url, create a new thread for each item
-  dst.create-thread
+  err <- dst.create-post purl.pathname, item.title, item.description
   console.log item
   console.log "----------------------------------------------------------------------------------------"
 

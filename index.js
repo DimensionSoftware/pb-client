@@ -111,11 +111,16 @@
     };
     prototype.createPost = function(path, title, body, cb){
       var this$ = this;
-      return this.request.get(this.R(path) + "?_surf=1", function(err, res, body){
+      console.log(this.R(path) + "?_surf=1");
+      return this.request.get(this.R(path) + "?_surf=1", function(err, res, surfBody){
         var r, locals, e;
+        if (err) {
+          return cb(err);
+        }
         try {
-          r = JSON.parse(body);
+          r = JSON.parse(surfBody);
           locals = r.locals;
+          console.log(locals.type);
           if (locals.type === 'forum') {
             this$.createThread(locals.forum.id, title, body, cb);
           } else {
