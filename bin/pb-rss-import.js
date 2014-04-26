@@ -24,7 +24,15 @@
     }
     src = new RSSEmitter(program.feedDb);
     src.on('item:new', function(guid, item){
-      return dst.createPost(purl.pathname, item.title, item.description, function(err){
+      var body;
+      body = item.categories
+        ? item.description + ("\n\n " + join(' ')(
+        map(function(it){
+          return '#' + it;
+        })(
+        item.categories)))
+        : item.description;
+      return dst.createPost(purl.pathname, item.title, body, function(err){
         console.log(item);
         return console.log("----------------------------------------------------------------------------------------");
       });

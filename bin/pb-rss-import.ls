@@ -35,9 +35,13 @@ if err
 src = new RSSEmitter program.feed-db
 
 src.on \item:new, (guid, item) ->
+  body = if item.categories
+    item.description + "\n\n #{item.categories |> map (-> '#' + it) |> join ' '}"
+  else
+    item.description
   # if dst is a thread url, add item to thread
   # if dst is a forum url, create a new thread for each item
-  err <- dst.create-post purl.pathname, item.title, item.description
+  err <- dst.create-post purl.pathname, item.title, body
   console.log item
   console.log "----------------------------------------------------------------------------------------"
 
