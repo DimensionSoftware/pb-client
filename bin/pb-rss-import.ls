@@ -23,6 +23,15 @@ program
 
 program.parse process.argv
 
+have-required-params = all id, [program.src, program.dst, program.email, program.password]
+
+unless have-required-params
+  console.warn """
+  Error:  --src, --dst, --email, and --password must be provided
+  """
+  console.warn program.output-help!
+  process.exit 1
+
 purl = url.parse program.dst
 site = "#{purl.protocol}//#{purl.hostname}"
 dst = new PBClient site, program.email, program.password
