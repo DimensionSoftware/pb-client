@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "bin": {
-    "pb-rss-import": "./bin/pb-rss-import.js"
+    "pb-rss-import": "./bin/pb-rss-import"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
