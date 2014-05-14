@@ -11,15 +11,16 @@ require! {
 global <<< prelude-ls
 
 defaults =
-  feed-db: './feed.db'
+  feed-db : './feed.db'
+  watch   : 1000ms * 60s * 10m
 
 program
-  .option '-s, --src [RSS_URL]', 'URL of RSS/Atom Feed to pull content from'
-  .option '-d, --dst [PB_URL]', 'Thread or Forum URL of PowerBulletin Site to post content to'
-  .option '-e, --email [PB_LOGIN_EMAIL]', 'Login Email for PowerBulletin'
-  .option '-p, --password [PB_PASSWORD]', 'Password for PowerBulletin'
-  .option '-f, --feed-db [LEVEL_DB_PATH]', "Path to LevelDB file (default: '#{defaults.feed-db}')", id, defaults.feed-db
-  .option '-w, --watch', 'Watch --src for changes'
+  .option '-s, --src <RSS_URL>', 'URL of RSS/Atom Feed to pull content from'
+  .option '-d, --dst <PB_URL>', 'Thread or Forum URL of PowerBulletin Site to post content to'
+  .option '-e, --email <PB_LOGIN_EMAIL>', 'Login Email for PowerBulletin'
+  .option '-p, --password <PB_PASSWORD>', 'Password for PowerBulletin'
+  .option '-f, --feed-db <LEVEL_DB_PATH>', "Path to LevelDB file (default: '#{defaults.feed-db}')", id, defaults.feed-db
+  .option '-w, --watch [INTERVAL]', "Watch --src for changes (default: '#{defaults.watch}')", parse-int, defaults.watch
 
 program.parse process.argv
 
@@ -29,7 +30,7 @@ unless have-required-params
   console.warn """
   Error:  --src, --dst, --email, and --password must be provided
   """
-  console.warn program.output-help!
+  program.output-help!
   process.exit 1
 
 purl = url.parse program.dst
@@ -55,10 +56,10 @@ src.on \item:new, (guid, item) ->
   console.log "----------------------------------------------------------------------------------------"
 
 src.on \item:skipped, (guid) ->
-  console.log \skipping, guid
+  # console.log \skipping, guid
 
 src.import program.src
 
 if program.watch
-  <- set-interval _, 60000ms
-  src.import program.src
+  <- set-interval(_, program.watch)
+  src.import(program.src)
