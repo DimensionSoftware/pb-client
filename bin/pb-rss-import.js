@@ -35,7 +35,7 @@
       body = item.categories
         ? item.description + ("\n\n " + join(' ')(
         map(function(it){
-          return '#' + it;
+          return '#' + it.replace(/\s+/g, '_');
         })(
         item.categories)))
         : item.description;

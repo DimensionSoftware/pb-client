@@ -46,7 +46,7 @@ src = new RSSEmitter program.feed-db
 
 src.on \item:new, (guid, item) ->
   body = if item.categories
-    item.description + "\n\n #{item.categories |> map (-> '#' + it) |> join ' '}"
+    item.description + "\n\n #{item.categories |> map (-> '#' + it.replace(/\s+/g, '_')) |> join ' '}"
   else
     item.description
   # if dst is a thread url, add item to thread
