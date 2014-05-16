@@ -1,3 +1,8 @@
+0.0.4 / 2014-05-16
+==================
+
+  * fixed bug that prevented new threads from being created
+
 0.0.3 / 2014-05-14
 ==================
 
