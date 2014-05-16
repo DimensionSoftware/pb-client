@@ -120,12 +120,15 @@
         try {
           r = JSON.parse(surfBody);
           locals = r.locals;
-          console.log(locals.type);
-          if (locals.type === 'forum') {
+          console.log(locals.furl.type);
+          if (locals.furl.type === 'forum') {
             this$.createThread(locals.forum.id, title, body, cb);
-          } else {
+          } else if (locals.furl.type.match(/^thread/)) {
             this$.post(locals.forum.id, locals.thread.id, body, cb);
+          } else {
+            console.warn("unknown type", locals != null ? locals.furl : void 8);
           }
+          return cb(null);
         } catch (e$) {
           e = e$;
           return cb(e);

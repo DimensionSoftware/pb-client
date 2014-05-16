@@ -62,11 +62,13 @@ module.exports = class PBClient
     try
       r = JSON.parse surf-body
       locals = r.locals
-      console.log locals.type
-      if locals.type is \forum
+      console.log locals.furl.type
+      if locals.furl.type is \forum
         @create-thread locals.forum.id, title, body, cb
-      else
+      else if locals.furl.type.match /^thread/
         @post locals.forum.id, locals.thread.id, body, cb
-      return
+      else
+        console.warn "unknown type", locals?furl
+      cb null
     catch
       cb e
