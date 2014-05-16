@@ -5,7 +5,7 @@
   "homepage": "https://powerbulletin.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PowerBulletin/pb-client"
+    "url": "https://github.com/DimensionSoftware/pb-client"
   },
   "main": "index.js",
   "bin": {

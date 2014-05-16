@@ -2,6 +2,7 @@
 ==================
 
   * fixed bug that prevented new threads from being created
+  * moved github repo to DimensionSoftware organization
 
 0.0.3 / 2014-05-14
 ==================
