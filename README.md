@@ -1,8 +1,17 @@
+<center>
+![PowerBulletin](http://dimensionsoftware.com/images/pb_logo_reflection.png)
+</center>
+
 pb-client
 =========
 
-node.js client library for PowerBulletin forums
+Node.JS client library for [PowerBulletin](https://powerbulletin.com) forums.  Start hacking!
 
+## Quick Start
+
+    $ npm install pb-client
+
+## Overview
 
 ```ls
 require! PBClient: pb-client
@@ -12,6 +21,11 @@ mma.login console.log
 mma.create-thread 2, 'title', 'body', console.log
 ```
 
-[Power Bulletin Forum Communities](https://powerbulletin.com "The Best Forum Software for building Communities in the Cloud!")
 
-[Dimension Software Consulting, best firm in Downtown Los Angeles](http://dimensionsoftware.com "Forward ideas. Simple tools. Groundbreaking software.")
+<center>
+![Fine Software by Dimension Consulting](https://dimensionsoftware.com/images/dimension_icon.png)
+
+<small>
+[Fine Software by Dimension Consulting](https://dimensionsoftware.com)
+</small>
+</center>
