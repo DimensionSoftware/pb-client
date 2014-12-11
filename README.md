@@ -1,5 +1,5 @@
 <center>
-![PowerBulletin](http://dimensionsoftware.com/images/pb_logo_reflection.png)(https://dimensionsoftware.com)
+[![PowerBulletin](http://dimensionsoftware.com/images/pb_logo_reflection.png)](https://dimensionsoftware.com)
 </center>
 
 pb-client
