@@ -1,5 +1,5 @@
 <center>
-![PowerBulletin](http://dimensionsoftware.com/images/pb_logo_reflection.png)
+![PowerBulletin](http://dimensionsoftware.com/images/pb_logo_reflection.png)(https://dimensionsoftware.com)
 </center>
 
 pb-client
@@ -23,9 +23,5 @@ mma.create-thread 2, 'title', 'body', console.log
 
 
 <center>
-![Fine Software by Dimension Consulting](https://dimensionsoftware.com/images/dimension_icon.png)
-
-<small>
-[Fine Software by Dimension Consulting](https://dimensionsoftware.com)
-</small>
+[![Fresh Software by Dimension Consulting](https://dimensionsoftware.com/images/software_by.png)](https://dimensionsoftware.com)
 </center>
